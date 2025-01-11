@@ -1,7 +1,27 @@
-const buttonEl = document.createElement('button');
-buttonEl.textContent = 'Click me!';
-const div1El = document.querySelector(".container");
-div1El.appendChild(buttonEl);
+const onClickAdd = () => {
+  const textEl = document.getElementById("add-text");
+  const text = textEl.value;
+  textEl.value = "";
+  const li = document.createElement("li");
+  const div = document.createElement("div");
+  const p = document.createElement("p");
+  p.textContent = text;
 
-const bodyEl = document.querySelector('body');
-bodyEl.textContent = null;
+  const button = document.createElement("button");
+  button.textContent = "delete";
+
+  button.addEventListener("click", () => {
+    const deleteTarget = button.closest("li");
+    document.getElementById("memo-list").
+removeChild(deleteTarget);
+  });
+
+  div.appendChild(p);
+  div.appendChild(button);
+  li.appendChild(div);
+  document.getElementById("memo-list").appendChild(li);
+};
+
+document
+.getElementById("add-button")
+.addEventListener("click", onClickAdd);
